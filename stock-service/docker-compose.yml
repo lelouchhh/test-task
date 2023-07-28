@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/stock-service
+    command: air ./stock-service/main.go
+    depends_on:
+      - db
+    networks:
+      - default
+  db:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+
+volumes:
+  postgres-db:

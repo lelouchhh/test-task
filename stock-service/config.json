@@ -1,0 +1,13 @@
+{
+  "debug": true,
+  "server": {
+    "address": ":3000"
+  },
+  "context": {
+    "timeout": 5
+  },
+  "database": {
+    "host": "localhost",
+    "port": "5432"
+  }
+}

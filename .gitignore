@@ -1,0 +1,6 @@
+./shop/.env
+./stock-service/.env
+./shop/.idea
+./stock-service/.idea
+./stock-service/postgres-*
+./shop/postgres-*

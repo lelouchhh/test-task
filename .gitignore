@@ -4,3 +4,6 @@
 ./stock-service/.idea
 ./stock-service/postgres-*
 ./shop/postgres-*
+.idea
+*.iml
+*.idea
